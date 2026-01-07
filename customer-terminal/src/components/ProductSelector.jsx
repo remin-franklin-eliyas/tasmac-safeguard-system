@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api';
+import { ShoppingCart, Calendar, Wine, DollarSign } from "lucide-react";
 import { Wine, ShieldAlert, CheckCircle, AlertTriangle } from 'lucide-react';
 
 function ProductSelector({ user, onProductSelected, onCancel }) {
