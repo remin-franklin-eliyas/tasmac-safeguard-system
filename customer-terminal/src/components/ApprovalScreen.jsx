@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, ShieldAlert } from 'lucide-react';
+import { ShoppingCart, Calendar, Wine, DollarSign } from "lucide-react";
 
 function ApprovalScreen({ user, product, onApproved, onDenied, socket }) {
   const [status, setStatus] = useState('waiting');
