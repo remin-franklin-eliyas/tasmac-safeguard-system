@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
+import { Search, UserPlus, Shield, AlertCircle, CheckCircle } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, AlertTriangle, Users } from 'lucide-react';
 
@@ -17,8 +18,8 @@ function Analytics() {
     try {
       setLoading(true);
       const [trendsRes, highRiskRes] = await Promise.all([
-        axios.get(`/api/analytics/trends/purchases?days=${timeRange}`),
-        axios.get('/api/analytics/high-risk-users'),
+        api.get(`/api/analytics/trends/purchases?days=${timeRange}`),
+        api.get('/api/analytics/high-risk-users'),
       ]);
       setTrends(trendsRes.data.trends);
       setHighRiskUsers(highRiskRes.data.users);
