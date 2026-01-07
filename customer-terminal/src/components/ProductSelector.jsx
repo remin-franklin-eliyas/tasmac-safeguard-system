@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { Wine, ShieldAlert, CheckCircle, AlertTriangle } from 'lucide-react';
 
 function ProductSelector({ user, onProductSelected, onCancel }) {
@@ -24,7 +24,7 @@ function ProductSelector({ user, onProductSelected, onCancel }) {
     try {
       // Get user's transactions today
       const today = new Date().toISOString().split('T')[0];
-      const response = await axios.get(`/api/transactions/user/${user.user_id}`, {
+      const response = await api.get(`/api/transactions/user/${user.user_id}`, {
         params: { start_date: today }
       });
       
@@ -70,7 +70,7 @@ function ProductSelector({ user, onProductSelected, onCancel }) {
 
     try {
       // Log the purchase
-      const response = await axios.post('/api/transactions/log', {
+      const response = await api.post('/api/transactions/log', {
         user_id: user.user_id,
         shop_id: 1,
         alcohol_type: selectedProduct.type,
