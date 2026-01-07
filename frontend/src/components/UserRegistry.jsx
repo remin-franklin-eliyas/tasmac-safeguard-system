@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { Search, UserPlus, Shield, AlertCircle, CheckCircle } from 'lucide-react';
 
 function UserRegistry() {
@@ -25,7 +25,7 @@ function UserRegistry() {
     try {
       setLoading(true);
       const params = filterRisk ? { risk_level: filterRisk } : {};
-      const response = await axios.get('/api/users/', { params });
+      const response = await api.get('/api/users/', { params });
       setUsers(response.data.users);
       setError(null);
     } catch (err) {
@@ -39,7 +39,7 @@ function UserRegistry() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/users/register', {
+      await api.post('/api/users/register', {
         ...formData,
         age: parseInt(formData.age),
       });
@@ -53,7 +53,7 @@ function UserRegistry() {
 
   const calculateRiskScore = async (userId) => {
     try {
-      await axios.get(`/api/users/${userId}/risk`);
+      await api.get(`/api/users/${userId}/risk`);
       fetchUsers();
     } catch (err) {
       alert('Failed to calculate risk score');
@@ -63,9 +63,9 @@ function UserRegistry() {
   const toggleBlock = async (userId, isBlocked) => {
     try {
       if (isBlocked) {
-        await axios.post(`/api/users/${userId}/unblock`);
+        await api.post(`/api/users/${userId}/unblock`);
       } else {
-        await axios.post(`/api/users/${userId}/block`);
+        await api.post(`/api/users/${userId}/block`);
       }
       fetchUsers();
     } catch (err) {
