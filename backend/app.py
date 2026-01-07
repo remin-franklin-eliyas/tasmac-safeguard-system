@@ -105,3 +105,7 @@ if __name__ == '__main__':
         port=port,
         debug=False  # Disable debug in production
     )
+
+# AFTER app creation & config
+with app.app_context():
+    init_db()
