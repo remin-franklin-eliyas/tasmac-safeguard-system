@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { Users, ShoppingCart, AlertTriangle, Activity, TrendingUp } from 'lucide-react';
 
 function Dashboard() {
@@ -14,7 +14,7 @@ function Dashboard() {
   const fetchDashboardStats = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/analytics/dashboard');
+      const response = await api.get('/api/analytics/dashboard');
       setStats(response.data);
       setError(null);
     } catch (err) {
