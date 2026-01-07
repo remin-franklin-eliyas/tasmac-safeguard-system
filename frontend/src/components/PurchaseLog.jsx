@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api';
+import { ShoppingCart, Calendar, Wine, DollarSign } from "lucide-react";
 import { Search, UserPlus, Shield, AlertCircle, CheckCircle } from 'lucide-react';
 
 function PurchaseLog() {
