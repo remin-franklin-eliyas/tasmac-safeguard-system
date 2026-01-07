@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     // Connect to WebSocket
-    const newSocket = io('http://localhost:5001');
+    const newSocket = io('https://tasmac-safeguard-system-production.up.railway.app');
     
     newSocket.on('connect', () => {
       console.log('Connected to server');
