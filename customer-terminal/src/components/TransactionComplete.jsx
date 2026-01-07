@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { CheckCircle, Receipt } from 'lucide-react';
+import { ShoppingCart, Calendar, Wine, DollarSign } from "lucide-react";
 
 function TransactionComplete({ transaction, onReset }) {
   useEffect(() => {
