@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import api from '../api';
 import { CreditCard, Loader } from 'lucide-react';
+import { ShoppingCart, Calendar, Wine, DollarSign } from "lucide-react";
 
 function AadhaarScanner({ onUserVerified }) {
   const [aadhaar, setAadhaar] = useState('');
