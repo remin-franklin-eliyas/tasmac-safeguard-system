@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { ShoppingCart, Calendar, DollarSign, Wine } from 'lucide-react';
+import api from '../api';
+import { Search, UserPlus, Shield, AlertCircle, CheckCircle } from 'lucide-react';
 
 function PurchaseLog() {
   const [transactions, setTransactions] = useState([]);
@@ -28,7 +28,7 @@ function PurchaseLog() {
   const fetchTransactions = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/transactions/recent?limit=100');
+      const response = await api.get('/api/transactions/recent?limit=100');
       setTransactions(response.data.transactions);
     } catch (err) {
       console.error(err);
@@ -39,7 +39,7 @@ function PurchaseLog() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/api/users/');
+      const response = await api.get('/api/users/');
       setUsers(response.data.users);
     } catch (err) {
       console.error(err);
@@ -62,7 +62,7 @@ function PurchaseLog() {
   const handleLogPurchase = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/transactions/log', {
+      await api.post('/api/transactions/log', {
         user_id: parseInt(formData.user_id),
         shop_id: parseInt(formData.shop_id),
         alcohol_type: formData.alcohol_type,
