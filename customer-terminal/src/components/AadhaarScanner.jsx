@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { CreditCard, Loader } from 'lucide-react';
 
 function AadhaarScanner({ onUserVerified }) {
@@ -20,7 +20,7 @@ function AadhaarScanner({ onUserVerified }) {
 
     try {
       // Fetch all users and find by Aadhaar
-      const response = await axios.get('/api/users/');
+      const response = await api.get('/api/users/');
       const user = response.data.users.find(u => u.aadhaar_mock === aadhaar);
 
       if (!user) {
@@ -43,7 +43,7 @@ function AadhaarScanner({ onUserVerified }) {
 
   const quickSelect = (userId) => {
     // For demo: Quick select test users
-    axios.get(`/api/users/${userId}`)
+    api.get(`/api/users/${userId}`)
       .then(response => {
         onUserVerified(response.data);
       })
